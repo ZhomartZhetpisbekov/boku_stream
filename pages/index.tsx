@@ -3,6 +3,8 @@ import Banner from "@/components/banner";
 import Header from "@/components/header";
 import Modal from "@/components/modal";
 import Row from "@/components/row";
+import { auth } from "@/firebase";
+import useList from "@/hooks/useList";
 import { Movie } from "@/typings";
 import requests from "@/utils/requests";
 import Head from "next/head";
@@ -29,7 +31,9 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
+  const user = auth.currentUser;
   const showModal = useRecoilState(modalState);
+  const myList = useList(user?.uid);
 
   return (
     <div className="relative h-screen gradient">
@@ -39,12 +43,13 @@ const Home = ({
       </Head>
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-20 lg:pl-16">
-        <Banner netflixOriginals={netflixOriginals}/>
+        <Banner netflixOriginals={netflixOriginals} />
         <section className="space-y-[2rem] md:space-y-24">
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
           {/* My List Component*/}
+          {myList.length > 0 && <Row title="My List" movies={myList} />}
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />

@@ -1,8 +1,10 @@
+import useAuth from "@/hooks/useAuth";
 import { BookmarkIcon, CodeBracketIcon, CurrencyEuroIcon, FireIcon, HomeIcon, MagnifyingGlassIcon, TvIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const {signOutUser} = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +24,7 @@ const Header = () => {
 
   return (
     <header className={`${isScrolled && "bg-[#141414]"}`}>
-      <div className="flex gap-x-10">
+      <div className="flex md:gap-x-10">
         <div className="flex gap-x-1 items-center font-semibold cursor-pointer">
           <TvIcon className="w-6 h-6 text-[#cae962]" />
           boku.stream
@@ -55,7 +57,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="px-6 py-2 bg-[#cae962] rounded-md text-black cursor-pointer">
-        <button>Login</button>
+        <button onClick={signOutUser}>Sign Out</button>
       </div>
     </header>
   );

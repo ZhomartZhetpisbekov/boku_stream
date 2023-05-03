@@ -1,13 +1,14 @@
 // import { modalState, movieState } from "@/atoms/modalAtom";
 import { modalState, movieState } from "@/atoms/modalAtom";
 import { Movie } from "@/typings";
+import { DocumentData } from "firebase/firestore";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 // import { useRecoilState } from "recoil";
 
 interface Props {
-  movie: Movie;
+  movie: Movie | DocumentData;
 }
 
 const Thumbnail = ({ movie }: Props) => {
@@ -19,7 +20,7 @@ const Thumbnail = ({ movie }: Props) => {
     if (movie.title?.length > 16) {
       setMovieTitle(movie.title?.slice(0, 16) + "...");
     }
-  })
+  }, [movie])
 
   return (
     <div className="flex flex-col transition duration-200

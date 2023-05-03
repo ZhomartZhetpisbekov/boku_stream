@@ -3,10 +3,11 @@ import { Movie } from "@/typings";
 import Thumbnail from "./thumbnail";
 import { useRef, useState } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { DocumentData } from "firebase/firestore";
 
 interface Props {
   title: String;
-  movies: Movie[];
+  movies: Movie[] | DocumentData[];
 }
 
 const Row = ({ title, movies }: Props) => {
