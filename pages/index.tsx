@@ -35,7 +35,7 @@ const Home = ({
     <div className="relative h-screen gradient">
       <Head>
         <title>Boku Stream</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/boku-logo.png" />
       </Head>
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-20 lg:pl-16">

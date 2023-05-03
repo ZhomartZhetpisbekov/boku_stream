@@ -20,7 +20,7 @@
   }
 
   .input {
-    @apply w-full rounded bg-[white]/90 px-3 py-2 placeholder-[gray] outline-none focus:bg-white
+    @apply w-full text-black rounded bg-[white]/90 px-3 py-2 placeholder-[gray] outline-none focus:bg-white
   }
 
   .bannerButton {
